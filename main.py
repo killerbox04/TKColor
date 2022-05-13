@@ -3,7 +3,11 @@
 import tkinter as tk
 from tkinter import ttk
 import time
+import random
 
+#Make color window a random color on startup
+ranRGB = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+ranHex = '#%02x%02x%02x' % ranRGB
 
 class main(tk.Tk):
     def __init__(self):
@@ -14,16 +18,13 @@ class main(tk.Tk):
         self.resizable(width=False, height=False)
 
         #THIS NEEEEEEDS TO BE CHANGED TO A CANVACE
-        #Or does it, its not causing a problem its.
-        #Its like using a jet engine to blow leaves away
-        #Yeah it works but I mean, its a little goofy
         #Color window
         self.colorWin = tk.Label(
                 self,
-                text = "",
+                text = f"HEX:{ranHex}",
                 height = 10,
                 width = 17,
-                bg = "#65A8E1"
+                bg = ranHex
                 )
         
         self.colorWin.grid(
@@ -36,7 +37,8 @@ class main(tk.Tk):
         #RGB Input Boxes
         #Red
         self.redBox = tk.Entry(
-                self
+                self,
+                bg = "red"
                 )
 
         self.redBox.grid(
@@ -48,7 +50,8 @@ class main(tk.Tk):
         #Green
 
         self.greenBox = tk.Entry(
-                self
+                self,
+                bg = "green"
                 )
 
         self.greenBox.grid(
@@ -60,7 +63,8 @@ class main(tk.Tk):
         
         #Blue
         self.blueBox = tk.Entry(
-                self
+                self,
+                bg = "blue"
                 )
 
         self.blueBox.grid(
@@ -92,16 +96,15 @@ class main(tk.Tk):
             rgb = (R, G, B)
             colorHex = '%02x%02x%02x' % rgb
             
+            self.colorWin.config(text = f"HEX:#{colorHex}")
             self.colorWin.config(bg = f"#{colorHex}")
         
         except:
-            
-
-
-        pass
+            print("Invalid input")
 
 
 if __name__ == "__main__":
+
     app = main()
     app.mainloop()
 
