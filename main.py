@@ -18,6 +18,7 @@ class main(tk.Tk):
         self.resizable(width=False, height=False)
 
         #THIS NEEEEEEDS TO BE CHANGED TO A CANVACE
+        #fuck your canvas
         #Color window
         self.colorWin = tk.Label(
                 self,
